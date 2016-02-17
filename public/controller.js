@@ -15,7 +15,9 @@
             refresh();
             
             $scope.addContact = function(){
-                console.log($scope.list);
+                if($scope.list.name == undefined || $scope.list.email == undefined || $scope.list.number == undefined){
+                    return;
+                }
                 $http.post('/contactlist',$scope.list).success(function(response){
                     console.log(response);
                      refresh();
